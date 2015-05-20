@@ -1,0 +1,53 @@
+<?php
+$likeFruit = "Yes";
+$bt1 = "Fruit";
+if ($likeFruit == "Yes"){
+	$valueFruit = "Un Like";
+}else{
+	$valueFruit = "Like";
+}
+
+$likeSlimJim = "No";
+$bt2 = "Slim Jims";
+if ($likeSlimJim == "Yes"){
+	$valueSlimJim = "Un Like";
+}else{
+	$valueSlimJim = "Like";
+}
+
+$person = "Joe";
+
+?>
+
+<html>
+<head>
+
+
+<script type="text/javascript">
+function toggleLike(myVal, btId){
+	var person = "<?php echo $person; ?>";
+	if(myVal =="Likes"){
+		document.getElementById(btId).value = "Un Like";
+	}else{
+		document.getElementById(btId).value = "Likes";
+	}
+	alert (person+" "+myVal+" "+btId);
+}
+</script>
+</head>
+<body>
+<!--<h2>Station</h2>
+Like Fruit?
+<input onclick="toggleLike(this.value,this.id)" type="button" value="Likes" id="Fruit"></input>
+<br>
+Like Slim Jims'?
+<input onclick="toggleLike(this.value,this.id)" type="button" value="Likes" id="Slim Jims"></input> -->
+
+<h2>Dynamic</h2>
+Like Fruit?
+<input onclick="toggleLike(this.value,this.id)" type="button" value="<?php echo $valueFruit; ?>" id="<?php echo $bt1; ?>"></input>
+<br>
+Like Slim Jims'?
+<input onclick="toggleLike(this.value,this.id)" type="button" value="<?php echo $valueSlimJim; ?>" id="<?php echo $bt2; ?>"></input>
+</body>
+</html>

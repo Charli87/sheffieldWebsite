@@ -1,0 +1,73 @@
+<?php
+require_once "database.php";
+require_once "user_repository.php";
+require_once "header.php";
+$users = getUsers();
+if (isset($_GET['admin'])) {
+	$adminID = get_admin_by_id($_SESSION['admin'], $error);
+    header("Location: " . $_SERVER['PHP_SELF']);
+    exit();
+}
+
+$likeFruit = "1";
+$bt1 = "Account";
+if ($likeFruit == "1"){
+	$valueFruit = "Deactivate";
+}else{
+	$valueFruit = "Activate";
+}
+
+$person = "Joe";
+
+?>
+
+<html>
+<head>
+
+
+<script type="text/javascript">
+function toggleLike(myVal, btId){
+	var person = "<?php echo $person; ?>";
+	if(myVal =="Likes"){
+		document.getElementById(btId).value = "Deactivate";
+	}else{
+		document.getElementById(btId).value = "Activate";
+	}
+	alert (person+" "+myVal+" "+btId);
+}
+</script>
+</head>
+<body>
+<!--<h2>Station</h2>
+Like Fruit?
+<input onclick="toggleLike(this.value,this.id)" type="button" value="Likes" id="Fruit"></input>
+<br>
+Like Slim Jims'?
+<input onclick="toggleLike(this.value,this.id)" type="button" value="Likes" id="Slim Jims"></input> -->
+<h2>Dynamic</h2>
+<table>
+    <colgroup>
+        <col span="1" style="width: 30%;">
+        <col span="1" style="width: 30%;">
+        <col span="1" style="width: 40%;">
+    </colgroup>
+    <tr><th>Username</th><th>First Name</th><th>Last Name</th><th>Email</th><th>Active</th></tr>
+    <?php foreach ($users as &$user): ?>
+        <tr>
+            <td><?php echo $user["username"]; ?></td>
+            <td><?php echo $user["firstName"]; ?></td>
+            <td><?php echo $user["lastName"]; ?></td>
+            <td><?php echo $user["email"]; ?></td>
+			<td>Like Fruit?
+<input onclick="toggleLike(this.value,this.id)" type="button" value="<?php echo $valueFruit; ?>" id="<?php echo $bt1; ?>"></input></td>
+			
+			
+    <?php endforeach; ?>
+</table>
+
+
+
+
+
+</body>
+</html>

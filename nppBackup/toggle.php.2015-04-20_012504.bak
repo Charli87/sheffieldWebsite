@@ -1,0 +1,56 @@
+<?php
+
+require_once "database.php";
+require_once "user_repository.php";
+require_once "header.php";
+$users = getUsers();
+ if (isset($_GET['admin'])) {
+	$adminID = get_admin_by_id($_SESSION['admin'], $error);
+    header("Location: " . $_SERVER['PHP_SELF']);
+    exit();
+} 
+
+if ($user['active'] == 1){
+	$user['active'] = "Deactivate";
+}elseif ($user['active'] ==0){
+	$user['active'] = "Activate";
+}
+
+$person = "Joe";
+
+?>
+
+<html>
+<head>
+
+
+<script type="text/javascript">
+function toggleLike(myVal, btId){
+	var person = "<?php echo $person; ?>";
+	if(myVal =="1"){
+		document.getElementById(btId).value = "Deactivate";
+	}else{
+		document.getElementById(btId).value = "Activate";
+	}
+	alert (person+" "+myVal+" "+btId);
+}
+</script>
+</head>
+<body>
+
+<h2>Dynamic</h2>
+    <?php foreach ($users as &$user): ?>
+        <tr>
+            <?php echo $user["username"]; ?>
+            <?php echo $user["firstName"]; ?>
+            <?php echo $user["lastName"]; ?>
+            <?php echo $user["email"]; ?>
+			
+			<?php echo $user['active'];?>
+<input onclick="toggleLike(this.value,this.id)" type="button" value="$user['active']" id="3"></input>
+			<br>
+			
+    <?php endforeach; ?>
+
+</body>
+</html>

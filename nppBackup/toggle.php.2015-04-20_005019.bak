@@ -1,0 +1,63 @@
+<?php
+
+require_once "database.php";
+require_once "user_repository.php";
+require_once "header.php";
+$users = getUsers();
+/* if (isset($_GET['admin'])) {
+	$adminID = get_admin_by_id($_SESSION['admin'], $error);
+    header("Location: " . $_SERVER['PHP_SELF']);
+    exit();
+} */
+
+$active = "1";
+$bt1 = "Account";
+if ($active == "1"){
+	$active = "Deactivate";
+}else{
+	$active = "Activate";
+}
+
+$person = "Joe";
+
+?>
+
+<html>
+<head>
+
+
+<script type="text/javascript">
+function toggleLike(myVal, btId){
+	var person = "<?php echo $person; ?>";
+	if(myVal =="Likes"){
+		document.getElementById(btId).value = "Deactivate";
+	}else{
+		document.getElementById(btId).value = "Activate";
+	}
+	alert (person+" "+myVal+" "+btId);
+}
+</script>
+</head>
+<body>
+<h2>Station</h2>
+Like Fruit?
+<input onclick="toggleLike(this.value,this.id)" type="button" value="Likes" id="Fruit"></input>
+<br>
+Like Slim Jims'?
+<input onclick="toggleLike(this.value,this.id)" type="button" value="Likes" id="Slim Jims"></input> 
+<h2>Dynamic</h2>
+    <?php foreach ($users as &$user): ?>
+        <tr>
+            <?php echo $user["username"]; ?>
+            <?php echo $user["firstName"]; ?>
+            <?php echo $user["lastName"]; ?>
+            <?php echo $user["email"]; ?>
+			
+			Like Fruit?
+<input onclick="toggleLike(this.value,this.id)" type="button" value="<?php echo $active; ?>" id="<?php echo $bt1; ?>"></input>
+			<br>
+			
+    <?php endforeach; ?>
+
+</body>
+</html>

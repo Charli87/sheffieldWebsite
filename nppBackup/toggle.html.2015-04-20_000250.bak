@@ -1,0 +1,18 @@
+<head>
+<script type="text/javascript" src="script.js"></script>
+</head>
+
+<table id="tableForms" class="table">
+<tr>
+<td class="rowForm"><form><span>form1 content</span></form></td>
+<td class="showRowForm"><form><span>click on row to show its form</span></form></td>
+</tr>
+<tr>
+<td class="rowForm"><form><span>form2 content</span></form></td>
+<td class="showRowForm"><form><span>click on row to show its form</span></form></td>
+</tr>
+<tr>
+<td class="rowForm"><form><span>form3 content</span></form></td>
+<td class="showRowForm"><form><span>click on row to show its form</span></form></td>
+</tr>
+</table>

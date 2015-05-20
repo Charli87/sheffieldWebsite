@@ -1,0 +1,44 @@
+<?php
+require_once "database.php";
+$likeFruit = "1";
+$bt1 = "Account";
+if ($likeFruit == "1"){
+	$valueFruit = "Deactivate";
+}else{
+	$valueFruit = "Activate";
+}
+
+$person = "Joe";
+
+?>
+
+<html>
+<head>
+
+
+<script type="text/javascript">
+function toggleLike(myVal, btId){
+	var person = "<?php echo $person; ?>";
+	if(myVal =="Likes"){
+		document.getElementById(btId).value = "Deactivate";
+	}else{
+		document.getElementById(btId).value = "Activate";
+	}
+	alert (person+" "+myVal+" "+btId);
+}
+</script>
+</head>
+<body>
+<!--<h2>Station</h2>
+Like Fruit?
+<input onclick="toggleLike(this.value,this.id)" type="button" value="Likes" id="Fruit"></input>
+<br>
+Like Slim Jims'?
+<input onclick="toggleLike(this.value,this.id)" type="button" value="Likes" id="Slim Jims"></input> -->
+
+<h2>Dynamic</h2>
+Like Fruit?
+<input onclick="toggleLike(this.value,this.id)" type="button" value="<?php echo $valueFruit; ?>" id="<?php echo $bt1; ?>"></input>
+
+</body>
+</html>

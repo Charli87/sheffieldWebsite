@@ -1,0 +1,25 @@
+<html>
+<head>
+
+
+<script type="text/javascript">
+function toggleLike(myVal, btId){
+	var person = "Shawn";
+	if(myVal =="Likes"){
+		document.getElementById(btId).value = "Un Like";
+	}else{
+		document.getElementById(btId).value = "Like";
+	}
+	alert (person+" "+myVal+" "+btId);
+}
+</script>
+</head>
+<body>
+<h2>Station</h2>
+Like Fruit?
+<input onclick="toggleLike(this.value,this.id)" type="button" value="Like" id="Fruit"></input>
+<br>
+Like Slim Jims'?
+<input onclick="toggleLike(this.value,this.id)" type="button" value="Like" id="Slim Jims"></input>
+</body>
+</html>
